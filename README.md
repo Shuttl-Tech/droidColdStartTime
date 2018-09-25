@@ -11,4 +11,5 @@ In Android 4.4 (API level 19) and higher, logcat includes an output line contain
 * Draw your application for the first time.
 * The reported log line looks similar to the following example:
 
-    ActivityManager: Displayed com.android.myexample/.StartupTiming: +3s534ms
+>ActivityManager: Displayed com.android.myexample/.StartupTiming: 
+>+3s534ms
