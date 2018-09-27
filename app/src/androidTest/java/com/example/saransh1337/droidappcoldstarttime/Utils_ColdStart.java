@@ -14,7 +14,7 @@ public class Utils_ColdStart {
     public void launchApp() {
 
 
-        String appPkgName = ConfigColdStartTest.PACKAGENAME;
+        String appPkgName = ConfigColdStartTest.PACKAGENAME_CONSUMER;
         Context context = InstrumentationRegistry.getInstrumentation().getContext();
         Intent launchIntent;
         launchIntent = context.getPackageManager().getLaunchIntentForPackage(appPkgName);
