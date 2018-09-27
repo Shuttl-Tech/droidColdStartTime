@@ -1,14 +1,26 @@
 apply plugin: 'com.android.application'
 
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+    }
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.saransh1337.droidappcoldstarttime"
-        minSdkVersion 15
+        minSdkVersion 22
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    testOptions {
+        execution 'ANDROID_TEST_ORCHESTRATOR'
     }
     buildTypes {
         release {
@@ -20,10 +32,22 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test.uiautomator:uiautomator-v18:2.1.3'
+
+//    androidTestImplementation 'junit:junit:4.12'
+
+    // AndroidJUnitRunner and JUnit Rules
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+
+    // Espresso dependencies
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-accessibility:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-web:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso.idling:idling-concurrent:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.2'
+
+    //uiautomator
+    androidTestImplementation 'com.android.support.test.uiautomator:uiautomator-v18:2.1.3'
 }
