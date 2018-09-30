@@ -8,7 +8,7 @@ In Android 4.4 (API level 19) and higher, logcat includes an output line contain
 * Initialize the objects.
 * Create and initialize the activity.
 * Inflate the layout.
-* Draw your application for the first time.
+* Draw application for the first time.
 * The reported log line looks similar to the following example:
 
 >ActivityManager: Displayed com.android.myexample/.StartupTiming: 
