@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 
-
-testClassName=$1
-
 # building tests
 ./gradlew :app:clean :app:assembleDebugAndroidTest :app:assembleDebug
+sleep 5s
 
+### CLEAR LOGCAT ###
+adb logcat -c &
+
+### CLEAR OUTPUT FILES
+true > output_RAW.txt
+true > output_PROCESSED.txt
 
 ##
 adb push ./app/build/outputs/apk/debug/app-debug.apk /data/local/tmp/com.example.saransh1337.droidappcoldstarttime
@@ -21,7 +25,14 @@ adb shell pm install -t -r "/data/local/tmp/com.example.saransh1337.droidappcold
 # install test apk
 adb shell pm install -t -r "/data/local/tmp/com.example.saransh1337.droidappcoldstarttime.test"
 
-# run tests
-adb shell am instrument -w -r   -e debug false -e class com.example.saransh1337.droidappcoldstarttime.${testClassName} com.example.saransh1337.droidappcoldstarttime.test/android.support.test.runner.AndroidJUnitRunner
+# run test
+adb shell am instrument -w -r   -e debug false -e class com.example.saransh1337.droidappcoldstarttime.DroidColdStartTest com.example.saransh1337.droidappcoldstarttime.test/android.support.test.runner.AndroidJUnitRunner
+
+sleep 10s
+adb logcat -d | grep --line-buffered 'Displayed app.goplus.in.myapplication' > output_RAW.txt
+
+sh ./_processOutput.sh
+
+
 
 
