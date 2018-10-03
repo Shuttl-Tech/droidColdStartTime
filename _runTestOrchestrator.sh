@@ -25,13 +25,23 @@ adb shell pm install -t -r "/data/local/tmp/com.example.saransh1337.droidappcold
 # install test apk
 adb shell pm install -t -r "/data/local/tmp/com.example.saransh1337.droidappcoldstarttime.test"
 
-# run test
-adb shell am instrument -w -r   -e debug false -e class com.example.saransh1337.droidappcoldstarttime.DroidColdStartTest com.example.saransh1337.droidappcoldstarttime.test/android.support.test.runner.AndroidJUnitRunner
+for (( c=1; c<=5; c++ ))
+do
+    adb shell am instrument -w -r -e debug false -e class com.example.saransh1337.droidappcoldstarttime.DroidColdStartTest com.example.saransh1337.droidappcoldstarttime.test/android.support.test.runner.AndroidJUnitRunner
 
-sleep 10s
-adb logcat -d | grep --line-buffered 'Displayed app.goplus.in.myapplication' > output_RAW.txt
+    sleep 10s
+    adb logcat -d | grep --line-buffered 'Displayed app.goplus.in.myapplication' > output_RAW.txt
 
-sh ./_processOutput.sh
+    sh ./_processOutput.sh
+
+    sleep 10s
+    adb logcat -c &
+
+done
+
+
+
+
 
 
 
