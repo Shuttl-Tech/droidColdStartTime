@@ -22,10 +22,10 @@ public class DroidColdStartTest {
     public void testAppLaunch() {
 
 
-        int maxRunCount = 25;
+        int maxRunCount = 5;
         for (int i = 1; i <= maxRunCount; i++) {
 
-            Logging_ColdStart.debug("########### Loop run " + i + " of" + maxRunCount + " START ###########");
+            Logging_ColdStart.debug("########### Loop run " + i + " of " + maxRunCount + " START ###########");
             Logging_ColdStart.info("Launching app ");
             utils_coldStart.launchApp(appPackageName);
             Logging_ColdStart.info("Just launched the app. Waiting for 30 seconds");
