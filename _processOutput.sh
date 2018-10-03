@@ -2,8 +2,6 @@
 
 #trim empty spaces in original file
 
-#clear output processed
-true > output_PROCESSED.txt
 
 file="output_RAW.txt"
 sed -i -e "/^$/d" $file
