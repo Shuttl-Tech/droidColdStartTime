@@ -29,5 +29,9 @@ public class Logging_ColdStart {
         Log.w(ConfigColdStartTest.coldStartTag, logStr);
     }
 
+    public static void error(String logStr) {
+        Log.e(ConfigColdStartTest.coldStartTag, logStr);
+    }
+
 
 }
